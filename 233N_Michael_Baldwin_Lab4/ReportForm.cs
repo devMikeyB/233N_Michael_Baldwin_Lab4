@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,17 +19,7 @@ namespace _233N_Michael_Baldwin_Lab4
             InitializeComponent();
         }
 
-        private void searchAll(string searchValue, TravelDataSet.TravelRequestsDataTable tableAdapter)
-        {
-            try
-            {
-                this.travelRequestsTableAdapter.FillByName(tableAdapter, searchValue, searchValue, searchValue, searchValue, searchValue);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -44,10 +35,30 @@ namespace _233N_Michael_Baldwin_Lab4
 
         private void ReportForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(true)
+            if (MessageBox.Show("Are you sure you would like to close this page?",
+                "Close Form Validation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.No)
             {
-                this.Close();
+                e.Cancel = true;
             }
         }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.FileName = "TravelDetails.xls";
+            saveFile.Filter = "Excel (*.xls)|*.xls|All files (*.*)|*.*";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                {
+                    sw.WriteLine("test");
+                }
+            }
+        }
+
+ 
     }
 }

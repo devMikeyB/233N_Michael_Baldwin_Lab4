@@ -32,5 +32,15 @@ namespace _233N_Michael_Baldwin_Lab4.Properties {
                 return ((string)(this["TravelConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\acc.accdb")]
+        public string accConnectionString {
+            get {
+                return ((string)(this["accConnectionString"]));
+            }
+        }
     }
 }

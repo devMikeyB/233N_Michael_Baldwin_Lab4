@@ -31,15 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.purposeforTravelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tripDatesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.travelCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.travelRequestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.travelDataSet = new _233N_Michael_Baldwin_Lab4.TravelDataSet();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -52,15 +43,24 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.travelRequestsTableAdapter = new _233N_Michael_Baldwin_Lab4.TravelDataSetTableAdapters.TravelRequestsTableAdapter();
             this.exportButton = new System.Windows.Forms.Button();
             this.navToFirst = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.travelRequestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.travelDataSet = new _233N_Michael_Baldwin_Lab4.TravelDataSet();
+            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purposeforTravelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tripDatesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.travelCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.travelRequestsTableAdapter = new _233N_Michael_Baldwin_Lab4.TravelDataSetTableAdapters.TravelRequestsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -80,58 +80,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // employeeIDDataGridViewTextBoxColumn
-            // 
-            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // purposeforTravelDataGridViewTextBoxColumn
-            // 
-            this.purposeforTravelDataGridViewTextBoxColumn.DataPropertyName = "PurposeforTravel";
-            this.purposeforTravelDataGridViewTextBoxColumn.HeaderText = "PurposeforTravel";
-            this.purposeforTravelDataGridViewTextBoxColumn.Name = "purposeforTravelDataGridViewTextBoxColumn";
-            // 
-            // locationDataGridViewTextBoxColumn
-            // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            // 
-            // tripDatesDataGridViewTextBoxColumn
-            // 
-            this.tripDatesDataGridViewTextBoxColumn.DataPropertyName = "TripDates";
-            this.tripDatesDataGridViewTextBoxColumn.HeaderText = "TripDates";
-            this.tripDatesDataGridViewTextBoxColumn.Name = "tripDatesDataGridViewTextBoxColumn";
-            // 
-            // travelCostDataGridViewTextBoxColumn
-            // 
-            this.travelCostDataGridViewTextBoxColumn.DataPropertyName = "TravelCost";
-            this.travelCostDataGridViewTextBoxColumn.HeaderText = "TravelCost";
-            this.travelCostDataGridViewTextBoxColumn.Name = "travelCostDataGridViewTextBoxColumn";
-            // 
-            // travelRequestsBindingSource
-            // 
-            this.travelRequestsBindingSource.DataMember = "TravelRequests";
-            this.travelRequestsBindingSource.DataSource = this.travelDataSet;
-            // 
-            // travelDataSet
-            // 
-            this.travelDataSet.DataSetName = "TravelDataSet";
-            this.travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigator1
             // 
@@ -248,22 +196,19 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // travelRequestsTableAdapter
-            // 
-            this.travelRequestsTableAdapter.ClearBeforeFill = true;
-            // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(154, 221);
+            this.exportButton.Location = new System.Drawing.Point(141, 273);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(136, 23);
             this.exportButton.TabIndex = 2;
             this.exportButton.Text = "Export to Excel";
             this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
             // navToFirst
             // 
-            this.navToFirst.Location = new System.Drawing.Point(334, 221);
+            this.navToFirst.Location = new System.Drawing.Point(321, 273);
             this.navToFirst.Name = "navToFirst";
             this.navToFirst.Size = new System.Drawing.Size(136, 23);
             this.navToFirst.TabIndex = 3;
@@ -272,12 +217,68 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(513, 221);
+            this.exitButton.Location = new System.Drawing.Point(500, 273);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(136, 23);
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
+            // 
+            // travelRequestsBindingSource
+            // 
+            this.travelRequestsBindingSource.DataMember = "TravelRequests";
+            this.travelRequestsBindingSource.DataSource = this.travelDataSet;
+            // 
+            // travelDataSet
+            // 
+            this.travelDataSet.DataSetName = "TravelDataSet";
+            this.travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeIDDataGridViewTextBoxColumn
+            // 
+            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // purposeforTravelDataGridViewTextBoxColumn
+            // 
+            this.purposeforTravelDataGridViewTextBoxColumn.DataPropertyName = "PurposeforTravel";
+            this.purposeforTravelDataGridViewTextBoxColumn.HeaderText = "PurposeforTravel";
+            this.purposeforTravelDataGridViewTextBoxColumn.Name = "purposeforTravelDataGridViewTextBoxColumn";
+            // 
+            // locationDataGridViewTextBoxColumn
+            // 
+            this.locationDataGridViewTextBoxColumn.DataPropertyName = "Location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "Location";
+            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            // 
+            // tripDatesDataGridViewTextBoxColumn
+            // 
+            this.tripDatesDataGridViewTextBoxColumn.DataPropertyName = "TripDates";
+            this.tripDatesDataGridViewTextBoxColumn.HeaderText = "TripDates";
+            this.tripDatesDataGridViewTextBoxColumn.Name = "tripDatesDataGridViewTextBoxColumn";
+            // 
+            // travelCostDataGridViewTextBoxColumn
+            // 
+            this.travelCostDataGridViewTextBoxColumn.DataPropertyName = "TravelCost";
+            this.travelCostDataGridViewTextBoxColumn.HeaderText = "TravelCost";
+            this.travelCostDataGridViewTextBoxColumn.Name = "travelCostDataGridViewTextBoxColumn";
+            // 
+            // travelRequestsTableAdapter
+            // 
+            this.travelRequestsTableAdapter.ClearBeforeFill = true;
             // 
             // ReportForm
             // 
@@ -294,11 +295,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ReportForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
