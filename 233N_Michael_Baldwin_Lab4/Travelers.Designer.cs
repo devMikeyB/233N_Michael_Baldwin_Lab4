@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Travelers));
             this.planePictureBox = new System.Windows.Forms.PictureBox();
             this.travelerIDTextBox = new System.Windows.Forms.TextBox();
+            this.travelRequestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.travelDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.travelDataSet = new _233N_Michael_Baldwin_Lab4.TravelDataSet();
             this.destinationTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.travelCostTextBox = new System.Windows.Forms.TextBox();
@@ -46,11 +49,15 @@
             this.purposeLabel = new System.Windows.Forms.Label();
             this.purposeTextBox = new System.Windows.Forms.TextBox();
             this.travelListView = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Purpose = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Location = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.travelRequestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.travelDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.travelDataSet = new _233N_Michael_Baldwin_Lab4.TravelDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -75,26 +82,18 @@
             this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tripDatesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.travelCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.LastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.FirstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Purpose = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Location = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.controlsGroupBox = new System.Windows.Forms.GroupBox();
-            this.reportButton = new System.Windows.Forms.Button();
-            this.displayButton = new System.Windows.Forms.Button();
-            this.printButton = new System.Windows.Forms.Button();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.printButton = new System.Windows.Forms.Button();
+            this.displayButton = new System.Windows.Forms.Button();
+            this.reportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.planePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
+            this.bindingNavigator1.SuspendLayout();
             this.travelCostGroupBox.SuspendLayout();
             this.accessDataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,6 +115,21 @@
             this.travelerIDTextBox.Name = "travelerIDTextBox";
             this.travelerIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.travelerIDTextBox.TabIndex = 1;
+            // 
+            // travelRequestsBindingSource
+            // 
+            this.travelRequestsBindingSource.DataMember = "TravelRequests";
+            this.travelRequestsBindingSource.DataSource = this.travelDataSetBindingSource;
+            // 
+            // travelDataSetBindingSource
+            // 
+            this.travelDataSetBindingSource.DataSource = this.travelDataSet;
+            this.travelDataSetBindingSource.Position = 0;
+            // 
+            // travelDataSet
+            // 
+            this.travelDataSet.DataSetName = "TravelDataSet";
+            this.travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // destinationTextBox
             // 
@@ -143,7 +157,7 @@
             // 
             // tripDatesTextBox
             // 
-            this.tripDatesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.travelRequestsBindingSource, "TravelCost", true));
+            this.tripDatesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.travelRequestsBindingSource, "TripDates", true));
             this.tripDatesTextBox.Location = new System.Drawing.Point(331, 217);
             this.tripDatesTextBox.Name = "tripDatesTextBox";
             this.tripDatesTextBox.Size = new System.Drawing.Size(100, 20);
@@ -244,7 +258,35 @@
             this.travelListView.Size = new System.Drawing.Size(614, 241);
             this.travelListView.TabIndex = 15;
             this.travelListView.UseCompatibleStateImageBehavior = false;
-            this.travelListView.View = System.Windows.Forms.View.List;
+            this.travelListView.View = System.Windows.Forms.View.Details;
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            // 
+            // LastName
+            // 
+            this.LastName.Text = "Last Name";
+            // 
+            // FirstName
+            // 
+            this.FirstName.Text = "First Name";
+            // 
+            // Purpose
+            // 
+            this.Purpose.Text = "Purpose";
+            // 
+            // Location
+            // 
+            this.Location.Text = "Destination";
+            // 
+            // Date
+            // 
+            this.Date.Text = "Date";
+            // 
+            // Cost
+            // 
+            this.Cost.Text = "Cost";
             // 
             // bindingNavigator1
             // 
@@ -283,21 +325,6 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // travelRequestsBindingSource
-            // 
-            this.travelRequestsBindingSource.DataMember = "TravelRequests";
-            this.travelRequestsBindingSource.DataSource = this.travelDataSetBindingSource;
-            // 
-            // travelDataSetBindingSource
-            // 
-            this.travelDataSetBindingSource.DataSource = this.travelDataSet;
-            this.travelDataSetBindingSource.Position = 0;
-            // 
-            // travelDataSet
-            // 
-            this.travelDataSet.DataSetName = "TravelDataSet";
-            this.travelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -344,6 +371,7 @@
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
@@ -384,7 +412,7 @@
             this.travelCostGroupBox.Size = new System.Drawing.Size(247, 58);
             this.travelCostGroupBox.TabIndex = 18;
             this.travelCostGroupBox.TabStop = false;
-            this.travelCostGroupBox.Text = "Travel Cost";
+            this.travelCostGroupBox.Text = "Travel Cost: $0";
             // 
             // totalTravelCostLabel
             // 
@@ -423,7 +451,7 @@
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(75, 23);
             this.findButton.TabIndex = 0;
-            this.findButton.Text = "Find";
+            this.findButton.Text = "Search";
             this.findButton.UseVisualStyleBackColor = true;
             this.findButton.Click += new System.EventHandler(this.findButton_Click);
             // 
@@ -491,7 +519,6 @@
             // 
             this.controlsGroupBox.Controls.Add(this.exitButton);
             this.controlsGroupBox.Controls.Add(this.clearButton);
-            this.controlsGroupBox.Controls.Add(this.searchButton);
             this.controlsGroupBox.Controls.Add(this.printButton);
             this.controlsGroupBox.Controls.Add(this.displayButton);
             this.controlsGroupBox.Controls.Add(this.reportButton);
@@ -502,25 +529,25 @@
             this.controlsGroupBox.TabStop = false;
             this.controlsGroupBox.Text = "Controls";
             // 
-            // reportButton
+            // exitButton
             // 
-            this.reportButton.Location = new System.Drawing.Point(111, 37);
-            this.reportButton.Name = "reportButton";
-            this.reportButton.Size = new System.Drawing.Size(75, 23);
-            this.reportButton.TabIndex = 0;
-            this.reportButton.Text = "Report";
-            this.reportButton.UseVisualStyleBackColor = true;
-            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            this.exitButton.Location = new System.Drawing.Point(581, 37);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 5;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // displayButton
+            // clearButton
             // 
-            this.displayButton.Location = new System.Drawing.Point(192, 37);
-            this.displayButton.Name = "displayButton";
-            this.displayButton.Size = new System.Drawing.Size(75, 23);
-            this.displayButton.TabIndex = 1;
-            this.displayButton.Text = "Display";
-            this.displayButton.UseVisualStyleBackColor = true;
-            this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
+            this.clearButton.Location = new System.Drawing.Point(354, 37);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 4;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // printButton
             // 
@@ -532,35 +559,25 @@
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
-            // searchButton
+            // displayButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(354, 37);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 3;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.displayButton.Location = new System.Drawing.Point(192, 37);
+            this.displayButton.Name = "displayButton";
+            this.displayButton.Size = new System.Drawing.Size(75, 23);
+            this.displayButton.TabIndex = 1;
+            this.displayButton.Text = "Display";
+            this.displayButton.UseVisualStyleBackColor = true;
+            this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
             // 
-            // clearButton
+            // reportButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(435, 37);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 4;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Location = new System.Drawing.Point(581, 37);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 5;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.reportButton.Location = new System.Drawing.Point(111, 37);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(75, 23);
+            this.reportButton.TabIndex = 0;
+            this.reportButton.Text = "Report";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
             // Travelers
             // 
@@ -592,12 +609,12 @@
             this.Text = "Travelers";
             this.Load += new System.EventHandler(this.Travelers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.planePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
+            this.bindingNavigator1.ResumeLayout(false);
+            this.bindingNavigator1.PerformLayout();
             this.travelCostGroupBox.ResumeLayout(false);
             this.travelCostGroupBox.PerformLayout();
             this.accessDataGroupBox.ResumeLayout(false);
@@ -666,7 +683,6 @@
         private System.Windows.Forms.GroupBox controlsGroupBox;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.Button displayButton;
         private System.Windows.Forms.Button reportButton;
