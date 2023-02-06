@@ -98,18 +98,19 @@ namespace _233N_Michael_Baldwin_Lab4
         }
 
         private void printButton_Click(object sender, EventArgs e)
-        {/*
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
-
-            PrintDocument.Print();
-
-            PrintPreviewDialog myPrintMentu = new PrintPreviewDialog();
-            myPrintMentu.ShowDialog(); 
-        */}
+        {
+            Panel panel = new Panel();
+            this.Controls.Add(panel);
+            Graphics grp = panel.CreateGraphics();
+            Size formSize = this.ClientSize;
+            memoryImage = new Bitmap(formSize.Width, formSize.Height, grp);
+            grp = Graphics.FromImage(memoryImage);
+            Point panelLocation = PointToScreen(panel.Location);
+            grp.CopyFromScreen(panelLocation.X, panelLocation.Y, 0, 0, formSize);
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
+        }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -129,5 +130,20 @@ namespace _233N_Michael_Baldwin_Lab4
         {
 
         }
+        private void CaptureScreen()
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Owner.Location.X, this.Owner.Location.Y, 0, 0, s);
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+        }
+
+        
     }
 }
