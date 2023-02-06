@@ -131,6 +131,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Travelers.resx">
       <DependentUpon>Travelers.cs</DependentUpon>
@@ -175,6 +176,7 @@
     <Content Include="acc.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="bin\Debug\images\plane.jpg" />
     <Content Include="Travel.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

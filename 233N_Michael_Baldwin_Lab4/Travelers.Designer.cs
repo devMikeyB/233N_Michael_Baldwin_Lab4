@@ -90,6 +90,7 @@
             this.reportButton = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.planePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelDataSetBindingSource)).BeginInit();
@@ -104,9 +105,11 @@
             // 
             // planePictureBox
             // 
+            this.planePictureBox.Image = global::_233N_Michael_Baldwin_Lab4.Properties.Resources.plane;
             this.planePictureBox.Location = new System.Drawing.Point(12, 58);
             this.planePictureBox.Name = "planePictureBox";
             this.planePictureBox.Size = new System.Drawing.Size(419, 122);
+            this.planePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.planePictureBox.TabIndex = 0;
             this.planePictureBox.TabStop = false;
             // 
@@ -307,7 +310,8 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
+            this.bindingNavigatorDeleteItem,
+            this.saveToolStripButton});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -595,6 +599,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.saveToolStripButton.Text = "Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
             // Travelers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -705,5 +719,6 @@
         private System.Windows.Forms.Button reportButton;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
     }
 }

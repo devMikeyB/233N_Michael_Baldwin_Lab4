@@ -78,7 +78,7 @@
             this.dataGridView1.DataSource = this.travelRequestsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 432);
             this.dataGridView1.TabIndex = 0;
             // 
             // employeeIDDataGridViewTextBoxColumn
@@ -250,7 +250,7 @@
             // 
             // exportButton
             // 
-            this.exportButton.Location = new System.Drawing.Point(141, 273);
+            this.exportButton.Location = new System.Drawing.Point(144, 466);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(136, 23);
             this.exportButton.TabIndex = 2;
@@ -260,7 +260,7 @@
             // 
             // navToFirst
             // 
-            this.navToFirst.Location = new System.Drawing.Point(321, 273);
+            this.navToFirst.Location = new System.Drawing.Point(324, 466);
             this.navToFirst.Name = "navToFirst";
             this.navToFirst.Size = new System.Drawing.Size(136, 23);
             this.navToFirst.TabIndex = 3;
@@ -270,7 +270,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(500, 273);
+            this.exitButton.Location = new System.Drawing.Point(503, 466);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(136, 23);
             this.exitButton.TabIndex = 4;

@@ -25,6 +25,7 @@ namespace _233N_Michael_Baldwin_Lab4
         {
             // TODO: This line of code loads data into the 'travelDataSet.TravelRequests' table. You can move, or remove it, as needed.
             this.travelRequestsTableAdapter.Fill(this.travelDataSet.TravelRequests);
+            //saveToolStripButton.Image = Image.
 
         }
         private void searchAll(string searchValue, TravelDataSet.TravelRequestsDataTable tableAdapter)
@@ -161,6 +162,11 @@ namespace _233N_Michael_Baldwin_Lab4
                 {
                     e.Cancel = true;
                 }
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {   
+            dataGridView1.Refresh();
         }
     }
 }
