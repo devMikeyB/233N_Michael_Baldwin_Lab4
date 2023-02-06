@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace _233N_Michael_Baldwin_Lab4
 {
@@ -34,7 +35,7 @@ namespace _233N_Michael_Baldwin_Lab4
         }
 
         private void ReportForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        { //Are you sure
             if (MessageBox.Show("Are you sure you would like to close this page?",
                 "Close Form Validation",
                 MessageBoxButtons.YesNo,
@@ -45,20 +46,94 @@ namespace _233N_Michael_Baldwin_Lab4
             }
         }
 
-        private void exportButton_Click(object sender, EventArgs e)
+        private void releaseObject(object obj)
         {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.FileName = "TravelDetails.xls";
-            saveFile.Filter = "Excel (*.xls)|*.xls|All files (*.*)|*.*";
-            if (saveFile.ShowDialog() == DialogResult.OK)
+            try
             {
-                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
-                {
-                    sw.WriteLine("test");
-                }
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occurred while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
 
- 
+        private void copyAlltoClipboard()
+        { //Copy all
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.xls)|*.xls";
+            sfd.FileName = "Travel_Details.xls";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                // Copy DataGridView results to clipboard
+                copyAlltoClipboard();
+
+                object misValue = System.Reflection.Missing.Value;
+                Excel.Application xlexcel = new Excel.Application();
+
+                xlexcel.DisplayAlerts = false; // Without this you will get two confirm overwrite prompts
+                Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                // Format column D as text before pasting results, this was required for my data
+                Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
+                rng.NumberFormat = "@";
+
+                // Paste clipboard results to worksheet range
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                // For some reason column A is always blank in the worksheet. ¯\_(ツ)_/¯
+                // Delete blank column A and select cell A1
+                Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
+                delRng.Delete(Type.Missing);
+                xlWorkSheet.get_Range("A1").Select();
+
+                // Save the excel file under the captured location from the SaveFileDialog
+                xlWorkBook.SaveAs(sfd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlexcel.DisplayAlerts = true;
+                xlWorkBook.Close(true, misValue, misValue);
+                xlexcel.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlexcel);
+
+                // Clear Clipboard and DataGridView selection
+                Clipboard.Clear();
+                dataGridView1.ClearSelection();
+
+                // Open the newly saved excel file
+                //if (File.Exists(sfd.FileName))
+                    //System.Diagnostics.Process.Start(sfd.FileName);
+            }
+        }
+
+        private void navToFirst_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Application.Exit();
+        }
     }
 }

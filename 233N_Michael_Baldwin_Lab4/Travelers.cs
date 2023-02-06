@@ -19,7 +19,7 @@ namespace _233N_Michael_Baldwin_Lab4
             InitializeComponent();
         }
 
-        
+
 
         private void Travelers_Load(object sender, EventArgs e)
         {
@@ -46,13 +46,14 @@ namespace _233N_Michael_Baldwin_Lab4
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-
+            ReportForm reportForm = new ReportForm();
+            reportForm.ShowDialog();
         }
 
         private void displayButton_Click(object sender, EventArgs e)
         {
-            
-            
+
+
             ListViewItem newItem = new ListViewItem(new[] {   travelerIDTextBox.Text, //Create item to be added to listview.
                                                               lastNameTextBox.Text,
                                                               firstNameTextBox.Text,
@@ -62,19 +63,20 @@ namespace _233N_Michael_Baldwin_Lab4
                                                               travelCostTextBox.Text});
 
 
-            foreach(ListViewItem item in travelListView.Items)
+            foreach (ListViewItem item in travelListView.Items)
             {//Checking if an identical item exists using SubItems.
-                if(item.Text == newItem.Text &&
+                if (item.Text == newItem.Text &&
                     item.SubItems[1].Text == newItem.SubItems[1].Text &&
                     item.SubItems[2].Text == newItem.SubItems[2].Text &&
                     item.SubItems[3].Text == newItem.SubItems[3].Text &&
                     item.SubItems[4].Text == newItem.SubItems[4].Text &&
                     item.SubItems[5].Text == newItem.SubItems[5].Text &&
-                    item.SubItems[6].Text == newItem.SubItems[6].Text){
+                    item.SubItems[6].Text == newItem.SubItems[6].Text)
+                {
                     MessageBox.Show("Item already in list, please select another.");
                     return;
                 }
-                
+
             }
 
             travelListView.Items.Add(newItem);
@@ -83,13 +85,15 @@ namespace _233N_Michael_Baldwin_Lab4
         }
 
         private void updatePriceTotal()
-        { double priceTotal = 0;
-           foreach(ListViewItem trip in travelListView.Items)
+        {
+            double priceTotal = 0;
+            foreach (ListViewItem trip in travelListView.Items)
             {
                 try
                 {
                     priceTotal = priceTotal + double.Parse(trip.SubItems[6].Text);
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("The price field of an item is incorrect so price cannot update.");
                 }
@@ -114,7 +118,10 @@ namespace _233N_Michael_Baldwin_Lab4
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            travelListView.Clear();
+            foreach(ListViewItem trip in travelListView.Items)
+            {
+                travelListView.Items.Remove(trip);
+            }
             travelerIDTextBox.Clear();
             firstNameTextBox.Clear();
             lastNameTextBox.Clear();
@@ -128,7 +135,7 @@ namespace _233N_Michael_Baldwin_Lab4
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
         private void CaptureScreen()
         {
@@ -144,6 +151,16 @@ namespace _233N_Michael_Baldwin_Lab4
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
 
-        
+        private void Travelers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you would like to close the application?",
+                "Close Form Validation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+        }
     }
 }

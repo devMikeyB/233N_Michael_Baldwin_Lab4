@@ -44,7 +44,9 @@ namespace _233N_Michael_Baldwin_Lab4
             }
             if (c == 1) //If reader found a line.
             {
-               MessageBox.Show("Logged in");
+               MessageBox.Show("Logged in as "+ inpUser);
+                Travelers travelers = new Travelers();
+                travelers.ShowDialog();
             }
             else //Not found
             {

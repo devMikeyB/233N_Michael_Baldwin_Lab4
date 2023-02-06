@@ -623,6 +623,7 @@
             this.Controls.Add(this.planePictureBox);
             this.Name = "Travelers";
             this.Text = "Travelers";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Travelers_FormClosing);
             this.Load += new System.EventHandler(this.Travelers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.planePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.travelRequestsBindingSource)).EndInit();

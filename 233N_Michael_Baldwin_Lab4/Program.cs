@@ -16,7 +16,7 @@ namespace _233N_Michael_Baldwin_Lab4
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Travelers());
+            Application.Run(new LoginForm());
         }
     }
 }
